@@ -1,0 +1,45 @@
+<HTML>
+<TITLE>CIFRA TEXTO</TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+function FuncCifrar() {
+	var Msg = document.getElementById('txtMsg').value;
+	var Cifra1 = document.getElementById('txtCifra1').value;
+	var Cifra2 = document.getElementById('txtCifra2').value;
+	var MsgCripto = "";
+	var i = 0;
+	var z = 0;
+	Cifra1 = Cifra1.toLowerCase() + Cifra1.toUpperCase();
+	Cifra2 = Cifra2.toLowerCase() + Cifra2.toUpperCase();
+
+	for (i=0; i < Msg.length; i ++) {
+		for (z=0; z < Cifra1.length; z ++){
+			if (Msg.substring(i, i + 1) == Cifra1.substring(z, z + 1)) {
+				MsgCripto += Cifra2.substring(z, z + 1);
+				break;
+			}
+			else if (Msg.substring(i, i + 1) == Cifra2. substring(z, z + 1)) {
+				MsgCripto += Cifra1.substring(z, z + 1);
+				break;
+			}
+			else if (z == Cifra1.length - 1)
+				MsgCripto += Msg.substring(i, i + 1);
+		}
+	}
+
+	document.getElementById('txtMsg').value = MsgCripto;
+}
+</SCRIPT>
+<BODY>
+	<INPUT ID="txtCifra1" NAME=CIFRA1 VALUE=MILHAR SIZE=6><BR>
+	<INPUT ID="txtCifra2" NAME=CIFRA2 VALUE=GUETOS SIZE=6><BR><BR>
+
+	<CENTER>
+
+		<TEXTAREA ID="txtMsg" ROWS=30 COLS=100></TEXTAREA><BR><BR>
+
+		<BUTTON NAME=BTNCIFRAR WIDTH=100 ONCLICK="FuncCifrar()">CIFRAR !</BUTTON><BR>
+	</CENTER>
+
+
+</BODY>
+</HTML>
